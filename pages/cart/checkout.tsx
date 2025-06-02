@@ -5,7 +5,7 @@ import CheckoutItems from '../../components/checkout/items';
 import { RootState } from 'store';
 import Link from 'next/link';
 import Logo from 'assets/icons/logo';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import { useRouter } from 'next/router';
