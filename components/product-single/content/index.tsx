@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { some } from 'lodash';
+import some from 'lodash/some';
 import { addProduct } from 'store/reducers/cart';
 import { toggleFavProduct } from 'store/reducers/user';
 import { ProductStoreType } from 'types';
@@ -43,7 +43,7 @@ const Content = ({ product, isFrag }: ProductContent) => {
   const onColorSet = (e: string) => setColor(e);
   const { setShowNotification, setShowLogin } = useContext(AppContext);
   const { favProducts } = useSelector((state: RootState) => state.user);
-  const isFavourite = some(favProducts, (productId) => productId === product.id);
+  const isFavourite = some(favProducts, (productId:string) => productId === product.id);
 
   const storedToken = localStorage.getItem('mariana-token');
   const token = useSelector((state: any) => state.user.token);
