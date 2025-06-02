@@ -1,4 +1,4 @@
-import { remove } from 'lodash';
+import remove  from 'lodash/remove';
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
@@ -60,7 +60,7 @@ const userSlice = createSlice({
         return;
       }
 
-      remove(state.favProducts, (id) => id === action.payload.id);
+      remove(state.favProducts, (id:string) => id === action.payload.id);
     },
     setUserLogged(state, action: PayloadAction<ProductType>) {
       const index = state.favProducts.includes(action.payload.id);
@@ -74,7 +74,7 @@ const userSlice = createSlice({
         };
       }
 
-      remove(state.favProducts, (id) => id === action.payload.id);
+      remove(state.favProducts, (id:string) => id === action.payload.id);
 
       return {
         ...state,
