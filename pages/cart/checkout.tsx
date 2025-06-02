@@ -5,13 +5,13 @@ import CheckoutItems from '../../components/checkout/items';
 import { RootState } from 'store';
 import Link from 'next/link';
 import Logo from 'assets/icons/logo';
-import { useEffect, useState } from 'react';
+import { useEffect,  useState } from 'react';
 import axios from 'axios';
 
 import { useRouter } from 'next/router';
 import { clearCart } from 'store/reducers/cart';
-import { Modal } from 'antd';
-
+// import { Modal } from 'antd';
+// const Modal = dynamic(() => import('antd/es/modal'), { ssr: false });
 const PaystackPaymentWrapper = dynamic(
   () => import('../../components/paystack/PaystackPaymentWrapper'),
   {
@@ -205,16 +205,32 @@ const CheckoutPage = () => {
     getCities();
   }, []);
 
+  // useEffect(() => {
+  //   AntdModal.info({
+  //     title: "🎉 New Feature Available!",
+  //     content: (
+  //       <div>
+  //         <p>You can now schedule orders to be delivered to your loved ones by selecting an intended delivery date!</p>
+  //         <p>Give it a try below.</p>
+  //       </div>
+  //     ),
+  //     okText: "Awesome!",
+  //   });
+  // }, []);
+
   useEffect(() => {
-    Modal.info({
-      title: "🎉 New Feature Available!",
-      content: (
-        <div>
-          <p>You can now schedule orders to be delivered to your loved ones by selecting an intended delivery date!</p>
-          <p>Give it a try below.</p>
-        </div>
-      ),
-      okText: "Awesome!",
+    // Use next tick to ensure client render
+    import('antd/es/modal').then((AntdModal) => {
+      AntdModal.default.info({
+        title: '🎉 New Feature Available!',
+        content: (
+          <div>
+            <p>You can now schedule orders to be delivered to your loved ones by selecting an intended delivery date!</p>
+            <p>Give it a try below.</p>
+          </div>
+        ),
+        okText: 'Awesome!',
+      });
     });
   }, []);
 

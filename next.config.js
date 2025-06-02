@@ -6,6 +6,8 @@ module.exports = {
   },
   reactStrictMode: false,
   images: {
-    domains: ['mariana.elonmuskreeve.com','admin.emarketpod.com','localhost']
-  }
+    domains: ['mariana.elonmuskreeve.com','admin.emarketpod.com','localhost'],
+    unoptimized:true
+  },
+  output: 'export'
 };
